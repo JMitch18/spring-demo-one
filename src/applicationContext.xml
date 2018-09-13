@@ -4,9 +4,23 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="myCoach" class="com.company.BaseballCoach">
+    <!--Define your beans here-->
+    <!-- Define the dependency-->
+    <bean id="myFortuneService" class="com.company.HappyFurtuneService">
 
 
+    </bean>
+    <bean id="myCoach" class="com.company.TrackCoach">
+
+        <!-- set up constructor injection-->
+        <constructor-arg ref="myFortuneService"></constructor-arg>
+
+    </bean>
+
+    <bean id="myCricketCoach" class="com.company.CricketCoach">
+
+        <!-- set up setter injection -->
+        <property name="fortuneService" ref="myFortuneService"/>
 
     </bean>
 
